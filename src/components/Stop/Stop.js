@@ -11,10 +11,15 @@ let StopStyle = {
 };
 
 class Stop extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {idz: props.initId};
+  }
+
   render() {
     return (
       <section>
-        <StopHeader />
+        <StopHeader initStopname={this.state.idz} initStopid='above'/>
         <div style={StopStyle.base}>
           <h1>A Stop Thing Potato</h1>
         </div>

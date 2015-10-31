@@ -10,13 +10,15 @@ let styles = {
   }
 };
 
+var arr = ['MONTICELLO & 15TH', 'MONTICELLO & 18TH', 'MONTICELLO & 19TH']
+
 class StopList extends React.Component {
   render() {
     return (
       <section style={styles.base}>
-        <Stop />
-        <Stop />
-        <Stop />
+        {arr.map(function (nos) {
+          return <Stop initId={nos}/>;
+        })}
       </section>
     )
   }
