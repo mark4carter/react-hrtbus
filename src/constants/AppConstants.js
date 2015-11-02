@@ -1,4 +1,3 @@
 module.exports = {
-  ADD_ITEM: 'ADD_ITEM',
-  REMOVE_ITEM: 'REMOVE_ITEM'
+  PULL_DATA: 'PULL_DATA'
 };

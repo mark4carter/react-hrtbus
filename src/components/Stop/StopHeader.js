@@ -23,18 +23,6 @@ class StopHeader extends React.Component {
     this.setState({stopid: id});
   }
 
-  /*componentDidMount() {
-    $.get(this.props.source, function(result) {
-      var lastGist = result[0];
-      if (this.isMounted()) {
-        this.setState({
-            stopname: lastGist.stopName,
-            stopid: lastGist.Id
-        });
-      }
-    }.bind(this));
-  }*/
-
   render() {
     return (
       <header style={styles.base}>
