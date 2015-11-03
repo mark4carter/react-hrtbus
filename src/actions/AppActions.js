@@ -35,7 +35,13 @@ var AppActions = {
   },
 
   addItem3: function(item) {
-  	window.myJsonpCallback = function(data) {
+
+  	AppDispatcher.handleNewAction({
+  		actionType:AppConstants.PULL_DATA,
+  		item: 	[{stopName: 'Test one'}, {stopName: 'two'}]
+  	})
+
+  	/*window.myJsonpCallback = function(data) {
 		AppDispatcher.handleNewAction({
 	    	actionType:AppConstants.PULL_DATA,
 	    	item: data
@@ -45,7 +51,7 @@ var AppActions = {
 	var scriptEl = document.createElement('script');
 	scriptEl.setAttribute('src',
 	    'http://api.hrtb.us/api/stops/near/37.0641593/-76.4929986/?callback=myJsonpCallback');
-	document.body.appendChild(scriptEl);
+	document.body.appendChild(scriptEl);*/
   },
 
 

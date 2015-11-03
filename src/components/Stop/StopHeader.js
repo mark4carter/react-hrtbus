@@ -26,8 +26,8 @@ class StopHeader extends React.Component {
   render() {
     return (
       <header style={styles.base}>
-        <h1>{this.state.stopname}</h1>
-        <span>{this.state.stopid}</span>
+        <h1>{this.props.initStopname}</h1>
+        <span>(Stop {this.props.initStopid})</span>
       </header>
     )
   }

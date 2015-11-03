@@ -13,13 +13,14 @@ let StopStyle = {
 class Stop extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {idz: props.initId};
+    this.state = {passedName: props.stopNamePass};
+    this.state = {passedStopId: props.stopIdPass};
   }
 
   render() {
     return (
       <section>
-        <StopHeader initStopname={this.state.idz} initStopid='above'/>
+        <StopHeader initStopname={this.props.stopNamePass} initStopid={this.props.stopIdPass}/>
         <div style={StopStyle.base}>
           <h1>A Stop Thing Potato</h1>
         </div>

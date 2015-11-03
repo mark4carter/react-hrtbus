@@ -39,15 +39,9 @@ class StopList extends React.Component {
     if (this.state.dataz) {
       return (
         <section style={styles.base}>
-        <h3> {this.state.dataz[0].stopName}</h3>
-        <span> {this.state.dataz.map(function (eachStopp) {
-          return <div>{eachStopp.stopName}</div>;
-        })} </span>
-        <br />
-        ?????--Below Does Not Update--??????
-
           {this.state.dataz.map(function (eachStop) {
-            return <Stop initId={eachStop.stopName}/>;
+            return <Stop stopNamePass={eachStop.stopName}
+              stopIdPass={eachStop.stopId}/>;
           })}
         </section>
       )
