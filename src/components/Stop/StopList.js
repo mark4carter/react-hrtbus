@@ -15,7 +15,6 @@ let styles = {
 
 function getStopsState() {
   var sentData = AppStore.getPulledData();
-  console.log(sentData);
   return {dataz: sentData};
 }
 
@@ -35,7 +34,6 @@ class StopList extends React.Component {
   }
 
   render() {
-    console.log('RENDEREDDD')
     if (this.state.dataz) {
       return (
         <section style={styles.base}>
@@ -51,7 +49,6 @@ class StopList extends React.Component {
   }
 
   _onChange() {
-    console.log('onChange');
     this.setState(getStopsState());
   }
 }
