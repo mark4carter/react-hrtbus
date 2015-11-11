@@ -1,9 +1,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
-
-
-//Still trying to find a better way 
-//to make API Calls w/o JQuery
+var request = require('superagent');
+var jsonp = require('superagent-jsonp');
 
 var AppActions = {
   addItem: function(item){
@@ -35,24 +33,20 @@ var AppActions = {
   },
 
   addItem3: function(item) {
-
-  	AppDispatcher.handleNewAction({
-  		actionType:AppConstants.PULL_DATA,
-  		item: 	[{stopName: 'Test one'}, {stopName: 'two'}]
-  	})
-
-  	/*window.myJsonpCallback = function(data) {
-		AppDispatcher.handleNewAction({
-	    	actionType:AppConstants.PULL_DATA,
-	    	item: data
-    	})	
+    var runDispatch = function(data) {
+    	AppDispatcher.handleNewAction({
+    		actionType:AppConstants.PULL_DATA,
+    		item: data.body
+    	})
     };
 
-	var scriptEl = document.createElement('script');
-	scriptEl.setAttribute('src',
-	    'http://api.hrtb.us/api/stops/near/37.0641593/-76.4929986/?callback=myJsonpCallback');
-	document.body.appendChild(scriptEl);*/
-  },
+  	request
+   .get('http://api.hrtb.us/api/stops/near/37.0638735/-76.4938087/')
+   .use(jsonp)
+   .end(function(err, res){
+      console.log(res);
+      runDispatch(res);
+   });  },
 
 
   consoleThis: function() {
