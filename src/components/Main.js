@@ -11,7 +11,6 @@ class AppComponent extends React.Component {
 
   handleClick() {
   	AppActions.addItem('this is the item');
-  	AppActions.consoleThis();
   }
 
   handleClick2() {

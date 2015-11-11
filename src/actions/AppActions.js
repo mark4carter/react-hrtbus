@@ -1,38 +1,44 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var AppConstants = require('../constants/AppConstants');
-var request = require('superagent');
-var jsonp = require('superagent-jsonp');
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import AppConstants from '../constants/AppConstants'
+import request from'superagent';
+import jsonp from 'superagent-jsonp';
 
 var AppActions = {
-  addItem: function(item){
-    window.myJsonpCallback = function(data) {
+  addItem(item ){
+    var runDispatch = function(data) {
 		AppDispatcher.handleNewAction({
 	    	actionType:AppConstants.PULL_DATA,
-	    	item: data
+	    	item: data.body
     	})	
     };
 
-	var scriptEl = document.createElement('script');
-	scriptEl.setAttribute('src',
-	    'http://api.hrtb.us/api/stops/near/36.863794/-76.285608/?callback=myJsonpCallback');
-	document.body.appendChild(scriptEl);
+    request
+   .get('http://api.hrtb.us/api/stops/near/36.863794/-76.285608/')
+   .use(jsonp)
+   .end(function(err, res){
+      console.log(res);
+      runDispatch(res);
+    });  
   },
 
-  addItem2: function(item) {
-  	window.myJsonpCallback = function(data) {
+  addItem2(item) {
+  	var runDispatch = function(data) {
 		AppDispatcher.handleNewAction({
 	    	actionType:AppConstants.PULL_DATA,
-	    	item: data
+	    	item: data.body
     	})	
     };
 
-	var scriptEl = document.createElement('script');
-	scriptEl.setAttribute('src',
-	    'http://api.hrtb.us/api/stops/near/36.86538/-76.30402/?callback=myJsonpCallback');
-	document.body.appendChild(scriptEl);
+    request
+   .get('http://api.hrtb.us/api/stops/near/36.86538/-76.30402/')
+   .use(jsonp)
+   .end(function(err, res){
+      console.log(res);
+      runDispatch(res);
+    });  
   },
 
-  addItem3: function(item) {
+  addItem3(item) {
     var runDispatch = function(data) {
     	AppDispatcher.handleNewAction({
     		actionType:AppConstants.PULL_DATA,
@@ -46,11 +52,7 @@ var AppActions = {
    .end(function(err, res){
       console.log(res);
       runDispatch(res);
-   });  },
-
-
-  consoleThis: function() {
-  	console.log("maybe");
+    });  
   }
 }
 

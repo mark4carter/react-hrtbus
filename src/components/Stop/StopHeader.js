@@ -1,5 +1,4 @@
 import React from 'react';
-import mData from './mData';
 
 let styles = {
   base: {
@@ -32,15 +31,5 @@ class StopHeader extends React.Component {
     )
   }
 };
-
-/*StopHeader.propTypes = {
-  initStopname: React.PropTypes.string,
-  initStopid: React.PropTypes.string
-}
-
-StopHeader.defaultProps = {
-  initStopname: 'propOne',
-  initStopid: 'prop2'
-}*/
 
 module.exports = StopHeader;

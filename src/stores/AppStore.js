@@ -1,7 +1,7 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
-var AppConstants = require('../constants/AppConstants');
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import {EventEmitter} from 'events';
+import assign from 'object-assign';
+import AppConstants from '../constants/AppConstants';
 
 
 var CHANGE_EVENT = 'change';
@@ -9,16 +9,16 @@ var CHANGE_EVENT = 'change';
 var pulledData;
 
 var AppStore = assign({}, EventEmitter.prototype, {
-  emitChange: function() {
+  emitChange() {
     this.emit(CHANGE_EVENT);
   },
 
 
-  addChangeListener: function(callback) {
+  addChangeListener(callback) {
   	this.on(CHANGE_EVENT, callback);
   },
 
-  getPulledData: function() {
+  getPulledData() {
   	return pulledData;
   }
 });
