@@ -3,18 +3,23 @@ import Radium from 'radium'
 import Stop from './Stop'
 import StopStore from '../../stores/StopStore'
 import AppActions from '../../actions/AppActions'
+import AppConstants from '../../constants/AppConstants'
 
 function getStops() {
-  return {
-    stopListData: StopStore.get()
-  }
+  return StopStore.get()
+}
+
+function getGeo() {
+  return StopStore.getGeoData()
 }
 
 class StopList extends React.Component {
 
   constructor() {
     super()
-    this.state = getStops()
+    this.state = {}
+    this.state.stopListData = getStops()
+    this.state.geoListData = getGeo()
     this._onChange = this._onChange.bind(this);
     this.startAPI = this.startAPI.bind(this);
   }
@@ -27,8 +32,8 @@ class StopList extends React.Component {
 
   //only if location data has been loaded, resend API request
   startAPI() {
-    if (this.state.stopListData.locationCoords) {
-      AppActions.pullStopData(this.state.stopListData.locationCoords);
+    if (this.state.geoListData.locationCoords) {
+      AppActions.pullStopData(this.state.geoListData.locationCoords);
     }
   }
 
@@ -43,18 +48,37 @@ class StopList extends React.Component {
 
   _onChange() {
     console.log('settingstate');
-    this.setState(getStops());
+    var obj = {};
+    obj.stopListData = getStops();
+    obj.geoListData = getGeo();
+    this.setState(obj);
   }
 
   render() {
 
-    if (!this.state.stopListData.locationCoords) {
+    if (!this.state.geoListData.locationCoords) {
       //probably needs better CSS
       //return only loading gif until data's been set
-      return (<div><center><img src="../../images/466.gif" /></center></div>)
-    } else {
-      console.log("Latitude = " + this.state.stopListData.locationCoords.coords.latitude);
-      console.log("Longitude = " + this.state.stopListData.locationCoords.coords.longitude);
+      return (
+                <div><center>
+                  <img src="../../images/466.gif" /> <br />
+                  <h2>Getting Your Location</h2>
+                </center></div>
+            )
+    } else if (this.state.geoListData.locationCoords.coords == AppConstants.FAIL ) {
+      return (
+                <div><center>
+                  <h2>Location Failed</h2>
+                </center></div>
+            )
+
+    } else if (!this.state.stopListData.stops) {
+      return (
+                <div><center>
+                  <img src="../../images/466.gif" /> <br />
+                  <h2>Gathering Data</h2>
+                </center></div>
+            )
     }
     return (
       <section>   

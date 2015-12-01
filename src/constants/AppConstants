@@ -1,3 +1,5 @@
 module.exports = {
-  PULL_DATA: 'PULL_DATA'
+  PULL_DATA: 'PULL_DATA',
+  FAIL: 'FAIL',
+  PULL_GEO: 'PULL_GEO'
 };

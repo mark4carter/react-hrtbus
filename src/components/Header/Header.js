@@ -35,6 +35,9 @@ class Header extends React.Component {
 
           <ul className="app-header--menu">
             <li>
+              <Link to="/findStops" activeStyle={style.activeLink}>Find Stops</Link>
+            </li>
+            <li>
               <Link to="/stop" activeStyle={style.activeLink}>Stop</Link>
             </li>
             <li>

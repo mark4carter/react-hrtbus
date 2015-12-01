@@ -6,6 +6,12 @@ var AppDispatcher = assign(new Dispatcher(), {
   	this.dispatch({
   		action: action
   	});
+  },
+
+  handleGeoData(action) {
+    this.dispatch({
+      action: action
+    });
   }
 });
 

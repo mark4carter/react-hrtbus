@@ -14,6 +14,7 @@ import RouteList from './Route/RouteList'
 import SingleRoute from './Route/Route'
 import StyleGuide from './StyleGuide/StyleGuide'
 import Instructions from './Instructions/Instructions'
+import FindStops from './Stop/FindStops'
 
 const history = createHistory();
 
@@ -44,6 +45,8 @@ class AppRouter extends React.Component {
           <Route path="stop" component={StopList}>
             <Route path=":stopid" component={Stop}/>
           </Route>
+          <Route path="stop/geo" component={StopList} />
+          <Route path="findStops" component={FindStops} />
           <Route path="route" component={RouteList}>
             <Route path=":routeid" component={SingleRoute}/>
           </Route>
