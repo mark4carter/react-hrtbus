@@ -97,7 +97,7 @@ class Stop extends React.Component {
             style.header,
             this.props.stop.buses.length === 0 && style.inactive
           ]}>
-          <h3>{this.props.stop.stop_name}</h3>
+          <h3>{this.props.stop.stopName}</h3>
           <span>{this.props.stop.stop_id}</span>
         </header>
 

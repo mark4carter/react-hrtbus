@@ -45,7 +45,6 @@ class AppRouter extends React.Component {
           <Route path="stop" component={StopList}>
             <Route path=":stopid" component={Stop}/>
           </Route>
-          <Route path="stop/geo" component={StopList} />
           <Route path="findStops" component={FindStops} />
           <Route path="route" component={RouteList}>
             <Route path=":routeid" component={SingleRoute}/>

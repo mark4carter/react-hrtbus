@@ -5,7 +5,6 @@ import stops from './mocks/stops'
 
 const CHANGE_EVENT = 'change'
 
-//remove this
 var jsonData = 0;
 
 
@@ -18,7 +17,6 @@ class StopStore extends EventEmitter {
 
   constructor() {
     super()
-   // stopListData.stops = stops // <--- remove
   }
 
   emitChange() {

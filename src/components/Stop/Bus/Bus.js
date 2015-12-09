@@ -39,7 +39,7 @@ class Bus extends React.Component {
           alternateColor(this.props.index)
         ]}>
         <td style={style.cell}>
-          <RouteBadge background={Colors.blue.base} route={this.props.bus.route} />
+          <RouteBadge background={Colors.blue.base} route={this.props.bus.route_id} />
         </td>
         <td style={style.cell}>
           {this.props.bus.destination}
